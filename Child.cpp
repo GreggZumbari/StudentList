@@ -1,6 +1,6 @@
 /* 
  * @author Greggory Hickman
- * @version dev 1.0
+ * @version dev 1.1
  */
 #include <iostream>
 #include <vector>
@@ -20,7 +20,7 @@ Child add(char* name, char* surname, int id, float gpa);
 
 int main() {
   //Input cstring
-  char* cmd;
+  char* cmd = new char[7];
 
   //Student list
   vector<Child> list;
@@ -30,35 +30,50 @@ int main() {
   cout << "Commands: " << endl << "ADD" << endl << "PRINT" << endl << "DELETE" << endl;
 
   cout << "> ";
-  cin >> cmd;
 
+  cin.getline(cmd, 7);
+
+  //Another way to do what I just did: if (strcmp(input,"ADD")) {
   //Add command - Add a student to the list with specified parameters
   if ((cmd[0] == 'A' || cmd[0] == 'a') &&
       (cmd[1] == 'D' || cmd[1] == 'd') &&
       (cmd[2] == 'D' || cmd[2] == 'd')) {
-    char* name;
-    char* surname;
+    char* name = new char[100];
+    char* surname = new char[100];
     int id;
     float gpa;
-
-    cout << endl << "Student\'s first name: ";
+    
+    cout << "Student\'s first name: ";
     cin >> name;
 
-    cout << endl << "Student\'s last name: ";
+    cout << "Student\'s last name: ";
     cin >> surname;
 
-    cout << endl << "Student ID: ";
-    cin >> id;
+    bool valid = false;
+    while (!valid) {
+      cout << "Student ID: ";
+      cin >> id;
+      if (id < 1000000 && id > 0) {
+	valid = true;
+      }
+      else {
+	cout << endl << "Invalid input. Please enter a 6-digit number" << endl;
+      }
+    }
 
-    cout << endl << "Student GPA: ";
+    cout << "Student GPA: ";
     cin >> gpa;
 
-    add(name, surname, id, gpa);
+    list.push_back(add(name, surname, id, gpa));
   }
-  
 }
 
 Child add(char* name, char* surname, int id, float gpa) {
-  
+  Child c;
+  c.name = name;
+  c.surname = surname;
+  c.id = id;
+  c.gpa = gpa;
+  return c;
 }
 
