@@ -21,7 +21,6 @@ Child add(char* name, char* surname, int id, float gpa);
 int main() {
   //Input cstring
   char* cmd = new char[7];
-  char a, b, c, d, e, f;
 
   //Student list
   vector<Child> list;
