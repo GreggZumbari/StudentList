@@ -1,6 +1,6 @@
 /* 
  * @author Greggory Hickman
- * @version dev 1.1
+ * @version dev 1.2
  */
 #include <iostream>
 #include <vector>
