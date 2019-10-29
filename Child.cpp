@@ -1,4 +1,5 @@
-/* 
+/*
+ *  
  * @author Greggory Hickman
  * @version dev 1.2
  */
@@ -41,6 +42,7 @@ int main() {
     if ((cmd[0] == 'A' || cmd[0] == 'a') &&
 	(cmd[1] == 'D' || cmd[1] == 'd') &&
 	(cmd[2] == 'D' || cmd[2] == 'd')) {
+      
       char* name = new char[100];
       char* surname = new char[100];
       int id;
@@ -71,6 +73,7 @@ int main() {
       
       //Add custom child to the list
       list.push_back(add(name, surname, id, gpa));
+      cin.ignore();
 
     }
       
@@ -99,6 +102,16 @@ int main() {
       }
       cout << "-----" << endl;
       
+    }
+
+    //Delete a student
+    if ((cmd[0] == 'D' || cmd[0] == 'd') &&
+	(cmd[1] == 'E' || cmd[1] == 'e') &&
+	(cmd[2] == 'L' || cmd[2] == 'l') &&
+	(cmd[3] == 'E' || cmd[3] == 'e') &&
+	(cmd[4] == 'T' || cmd[4] == 't') &&
+	(cmd[5] == 'E' || cmd[5] == 'e')) {
+      //delete a student (see vector::erase)
     }
 
     //Kill the program
